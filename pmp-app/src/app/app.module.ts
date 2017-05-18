@@ -4,10 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-
+import { DatabaseService } from './Shared/database.service';
+import { HeaderComponent } from './header/header.component';
+import { SetupComponent } from './setup/setup.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SetupComponent
   ],
   imports: [
     BrowserModule,
@@ -15,7 +19,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     NgbModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
