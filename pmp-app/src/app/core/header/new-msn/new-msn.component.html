@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title">New Mission</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="newMsnForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <div class="form-group">
+        <label for="msnNumber">Mission Number</label>
+        <input formControlName="msnNumber" type="text" class="form-control" id="msnNumber">
+        <span *ngIf="!newMsnForm.get('msnNumber').valid && newMsnForm.get('msnNumber').touched" class="help-block">Enter a valid mission number.</span>
+      </div>
+      <div class="form-group">
+        <label for="msnLeg">Leg:</label>
+        <select formControlName="msnLeg" id="msnLeg" class="form-control">
+				  <option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+          <option value="6">6</option>
+				  <option value="7">7</option>
+				  <option value="8">8</option>
+				  <option value="9">9</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+</div>

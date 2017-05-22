@@ -1,6 +1,5 @@
-<nav class="navbar fixed-top navbar-toggleable-sm navbar-light bg-faded">
-  <a class="navbar-brand" href="#">U.S. Air Force</a>
-
+<nav class="navbar navbar-static-top navbar-toggleable-sm navbar-inverse bg-inverse">
+  <a class="navbar-brand" [routerLink]="['config']">U.S. Air Force</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,13 +12,11 @@
 
     <ul class="navbar-nav mr-right">
       <li class="my-0 my-sm-0">
-        <a class="nav-link navbar-text" href="#">Sync</a>
+        <a class="nav-link navbar-text" (click)="editConfig()">Sync</a>
       </li>
       <li class="my-0 my-sm-0">
-        <a class="nav-link navbar-text" href="#">New Mission</a>
+        <a class="nav-link navbar-text" (click)="newMission()">New Mission</a>
       </li>
     </ul>
-
-
   </div>
 </nav>

@@ -1,40 +1,22 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from './Shared/database.service';
-import { Crw } from './Shared/crw';
-import { Msn } from './Shared/msn';
+import { AngularIndexedDbService } from './shared/services/angular-indexeddb.service';
+import { DatabaseService } from './shared/services/database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'app works!';
-  constructor(private databaseService: DatabaseService) {
-
-  }
-  onMissionDelete(incoming) {
-    let mission = new Msn;
-    mission.numleg = incoming;
-    this.databaseService.delMission(mission);
-  }
-
-  onMissionAdd(incoming) {
-    let mission = new Msn;
-    mission.numleg = incoming;
-    this.databaseService.addMission(mission);
-  }
-
-  onCrewmemberAdd(incoming , chacha) {
-    let crewmember = new Crw;
-    crewmember.name = chacha;
-    let mission = new Msn;
-    mission.numleg = incoming;
-    this.databaseService.addCrewmember(mission, crewmember);
-  }
-  onCrewmemberDeleteAll(numlegz) {
-    let mish = new Msn;
-    mish.numleg = numlegz;
-    this.databaseService.delCrewmemberAll(mish);
+  startLoad: boolean = false;
+  
+  constructor(private databaseService: DatabaseService,
+  private angularIndexedDb: AngularIndexedDbService,
+  private router: Router) {
+    this.angularIndexedDb.dbReady.subscribe(
+      (status: boolean) => this.startLoad = true
+    );
   }
 }
