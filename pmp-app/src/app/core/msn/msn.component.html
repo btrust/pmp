@@ -1,3 +1,18 @@
-<p>
-  msn works!
-</p>
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/msn/general']">General</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/msn/aircrew']">Aircrew</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/msn/itinerary']">Itinerary</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">AAR</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link">Notes</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
