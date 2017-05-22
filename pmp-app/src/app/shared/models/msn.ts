@@ -1,6 +1,7 @@
 export class Msn {
 numleg: string[];
 symbol: string = '';
+purpose: string = '';
 auth: any = '';
 tail: string = '';
 callsign: string = '';

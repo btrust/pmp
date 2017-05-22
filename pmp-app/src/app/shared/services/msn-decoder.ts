@@ -484,7 +484,7 @@ export class MsnDecoder {
             ['9', '2nd character of ORI Chalk sequence number'],
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -511,7 +511,7 @@ export class MsnDecoder {
             }
         };
 
-        for (let i of orgunit) {
+        for (let i of this.orgunit) {
             if (i[0] === msnnum.substring(3, 5)) {
                 msndetail[3] = [i[0], i[1]];
                 break;
@@ -520,7 +520,7 @@ export class MsnDecoder {
             }
         };
 
-        for (let i of route) {
+        for (let i of this.route) {
             if (i[0] === msnnum.substring(5, 7)) {
                 msndetail[4] = [i[0], i[1]];
                 break;
@@ -671,7 +671,7 @@ export class MsnDecoder {
             ['9', '2nd character of ORI Chalk sequence number'],
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -698,7 +698,7 @@ export class MsnDecoder {
             }
         };
 
-        for (let i of orgunit) {
+        for (let i of this.orgunit) {
             if (i[0] === msnnum.substring(3, 5)) {
                 msndetail[3] = [i[0], i[1]];
                 break;
@@ -846,7 +846,7 @@ export class MsnDecoder {
             ['9', '2nd character of ORI Chalk sequence number'],
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -873,7 +873,7 @@ export class MsnDecoder {
             }
         };
 
-        for (let i of orgunit) {
+        for (let i of this.orgunit) {
             if (i[0] === msnnum.substring(3, 5)) {
                 msndetail[3] = [i[0], i[1]];
                 break;
@@ -882,7 +882,7 @@ export class MsnDecoder {
             }
         };
 
-        for (let i of route) {
+        for (let i of this.route) {
             if (i[0] === msnnum.substring(5, 7)) {
                 msndetail[4] = [i[0], i[1]];
                 break;
@@ -932,7 +932,7 @@ export class MsnDecoder {
         ];
 
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -988,7 +988,7 @@ export class MsnDecoder {
             ['G', 'Identifies JA/ATT Mission'],
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -1065,7 +1065,7 @@ export class MsnDecoder {
             ['T', 'MAJCOM Training Events Without PAX Onboard']
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -1238,7 +1238,7 @@ export class MsnDecoder {
 
         let msndetail = [];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -1379,7 +1379,7 @@ export class MsnDecoder {
             ['S', 'AMC Support (AMD, CRG, MST, etc.)']
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;
@@ -1595,7 +1595,7 @@ export class MsnDecoder {
             ['68', '154WG/203ARS Joint Base Pearl Harbor Hickam AFB HI (PACAF),KC-135R'],
         ];
 
-        for (let i of first) {
+        for (let i of this.first) {
             if (i[0] === msnnum[0]) {
                 msndetail[0] = [i[0], i[1]];
                 break;

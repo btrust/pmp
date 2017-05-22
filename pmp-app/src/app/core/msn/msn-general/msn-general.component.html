@@ -1,3 +1,68 @@
-<p>
-  msn-general works!
-</p>
+<h2>8UN42TB01232</h2>
+<h5>Leg: 1</h5>
+<div class="container d-flex justify-content-start">
+  <form [formGroup]="msnGeneralForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="d-flex justify-content-start">
+      <div class="form-group">
+        <label for="msnSymbol">Symbol:</label>
+        <input formControlName="msnSymbol" type="text" class="form-control" id="msnSymbol" placeholder="">
+        <small id="symbolHelp" class="form-text text-muted">Maybe</small>
+        <span *ngIf="!msnGeneralForm.get('msnSymbol').valid && msnGeneralForm.get('msnSymbol').touched" class="help-block">Enter a valid Symbol.</span>
+      </div>
+      <div class="form-group">
+        <label for="msnPurpose">Purpose:</label>
+        <select class="form-control" id="msnPurpose">
+      <option *ngFor="let purpose of PURPOSE">{{ purpose[0] }}</option>
+    </select>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-start">
+      <div class="form-group">
+        <label for="msnAuth">Auth:</label>
+        <input formControlName="msnAuth" type="tel" class="form-control" id="msnAuth" placeholder="">
+        <small id="authHelp" class="form-text text-muted">Still thinking.</small>
+        <span *ngIf="!msnGeneralForm.get('msnAuth').valid && msnGeneralForm.get('msnAuth').touched" class="help-block">Enter a valid Auth.</span>
+      </div>
+    </div>
+    <div class="d-flex justify-content-start">
+      <div class="form-group">
+        <label for="msnTail">Tail:</label>
+        <input formControlName="msnTail" type="tel" class="form-control" id="msnTail" placeholder="YY-####">
+        <small id="tailHelp" class="form-text text-muted">Still thinking.</small>
+        <span *ngIf="!msnGeneralForm.get('msnTail').valid && msnGeneralForm.get('msnTail').touched" class="help-block">Enter a valid Tail.</span>
+      </div>
+    </div>
+    <div class="d-flex justify-content-start">
+      <div class="form-group">
+        <label for="msnCallsign">Call Sign:</label>
+        <input formControlName="msnCallsign" type="text" class="form-control" id="msnCallsign" placeholder="AFRCE01">
+        <small id="callsignHelp" class="form-text text-muted">ICAO Callsign.</small>
+        <span *ngIf="!msnGeneralForm.get('msnCallsign').valid && msnGeneralForm.get('msnCallsign').touched" class="help-block">Enter a valid Call Sign.</span>
+      </div>
+    </div>
+
+    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+  </form>
+
+<div class="container">
+  <div class="modal-header">
+    <h2>Mission Decoder:</h2>
+  </div>
+  <div class="modal-body">
+  <ul class="justify-content-end">
+    <li class="list-group-item">AMC KC-135s</li>
+    <li class="list-group-item">Training: Local Flights (to include home station “Round-robin” sorties)</li>
+    <li class="list-group-item">'Contingency (Priority 1 and 2) missions * Actual character for different contingencies assigned by 618 AOC/XOP (https://xop-web.scott.af.mil/documents)'</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  </div>
+  <div class="modal-footer">
+    I'm an american Airman
+  </div>
+  </div>
+  
+</div>

@@ -1,64 +1,95 @@
 export class Symbol {
+    sym12 = [
+        'A1',
+        'A2',
+        'A3',
+        'A4',
+        'A5',
+        'A6',
+        'A7',
+        'A8',
+        'A9',
+        'S1',
+        'S2',
+        'S3',
+        'S4',
+        'S5',
+        'S6',
+        'S7',
+        'S8',
+        'T1',
+        'T2',
+        'T3',
+        'T4',
+        'T5',
+        'T6',
+        'T7',
+        'T8',
+        'T9',
+        'O1',
+        'O2',
+        'O3',
+        'O4',
+        'O5',
+        'O6',
+        'O7',
+        'O8',
+        'O9',
+        'P1',
+        'P2',
+        'P3',
+        'P4',
+        'P5',
+        'P6',
+        'P7',
+        'P8',
+        'P9',
+        'R1',
+        'R2',
+        'R3',
+        'R4',
+        'R5',
+        'R6',
+        'R7',
+        'R8',
+        'R9',
+        'C1',
+        'C2',
+        'C3',
+        'C4',
+        'C5',
+        'C6',
+        'C7',
+        'C8',
+        'C9',
+        'L1',
+        'L2',
+        'L3',
+        'L4',
+        'L5',
+        'L6',
+        'L7',
+        'L8',
+        'M1',
+        'M2',
+        'M3',
+        'M4',
+        'M5',
+        'M6',
+        'M7',
+        'M8',
+        'N1',
+        'N2',
+        'N3',
+        'N4',
+        'N5',
+        'N6',
+        'N7',
+        'N8',
+        'Q1',
+        'Q2',
+        'Q3',
+        'Q5',
+    ];
 
-SYMBOL = [
-    ['AE', 'AEROMEDICAL_EVACUATION'],
-    ['AFRC', 'AFRC'],
-    ['AIREV', 'AEROMEDICAL_EVACUATION', 'ANG'],
-    ['AR', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'],
-    ['AREXER', 'CONTINGENCY_OPLAN_EXCERCISE'],
-    ['CHANL', 'CHANNEL'],
-    ['CNTNG', 'TANKER_AIR_REFUELING', 'CONTINGENCY_OPLAN_EXCERCISE'],
-    ['CORNET', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'],
-    ['EXER', 'TANKER_AIR_REFUELING', 'CONTINGENCY_OPLAN_EXCERCISE'],
-    ['GRDLFT', 'ANG'],
-    ['JAATT', 'JOINT_AIRBORNE_AIR_TRANSPORT_TRANING'],
-    ['JCSEXER', 'CONTINGENCY_OPLAN_EXERCISE'],
-    ['MISC', 'MISC'],
-    ['OPLAN', 'CONTINGENCY_OPLAN_EXERCISE'],
-    ['OPORD', 'CONTINGENCY_OPLAN_EXERCISE'],
-    ['SAAM', 'SPECIAL_ASSIGNMENT_AIRLIFT_MISSION'],
-    ['SAM', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'],
-    ['SUPT', 'OPERATIONAL_SUPPORT_AIRLIFT', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG', 'AFSOC'],
-    ['TRNG', 'LOCAL_TRAINING', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG']
-];
-
-type = {
-    CHANNEL: ['CHANL'],
-    SPECIAL_ASSIGNMENT_AIRLIFT_MISSION: ['SAAM'],
-    JOINT_AIRBORNE_AIR_TRANSPORT_TRANING: ['JAATT'],
-    AEROMEDICAL_EVACUATION: ['AIREV', 'AE'],
-    CONTINGENCY_OPLAN_EXERCISE: ['CNTNG', 'OPLAN', 'OPORD', 'JCSEXER', 'EXER', 'AREXER'],
-    OPERATIONAL_SUPPORT_AIRLIFT: ['SUPT'],
-    EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION: ['SAM', 'SUPT', 'TRNG', 'CORNET', 'AR'],
-    TANKER_AIR_REFUELING: ['CNTNG', 'EXER'],
-    ANG: ['GRDLFT', 'SUPT', 'AIREV', 'TRNG'],
-    AFSOC: ['SUPT'],
-    LOCAL_TRAINING: ['TRNG'],
-    AFRC: ['AFRC'],
-    MISC: ['MISC']
-};
-
-
-// Donno wha to do with this, put it in a function, but it's worthless to me now - too scared to delete.
-function() {
-  const AE = ['AEROMEDICAL_EVACUATION'];
-  const AFRC = ['AFRC'];
-  const AIREV = ['AEROMEDICAL_EVACUATION', 'ANG'];
-  const AR = ['EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'];
-  const AREXER = ['CONTINGENCY_OPLAN_EXCERCISE'];
-  const CHANL = ['CHANNEL'];
-  const CNTNG = ['TANKER_AIR_REFUELING', 'CONTINGENCY_OPLAN_EXCERCISE'];
-  const CORNET = ['EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'];
-  const EXER = ['TANKER_AIR_REFUELING', 'CONTINGENCY_OPLAN_EXCERCISE'];
-  const GRDLFT = ['ANG'];
-  const JAATT = ['JOINT_AIRBORNE_AIR_TRANSPORT_TRANING'];
-  const JCSEXER = ['CONTINGENCY_OPLAN_EXERCISE'];
-  const MISC = ['MISC'];
-  const OPLAN = ['CONTINGENCY_OPLAN_EXERCISE'];
-  const OPORD = ['CONTINGENCY_OPLAN_EXERCISE'];
-  const SAAM = ['SPECIAL_ASSIGNMENT_AIRLIFT_MISSION'];
-  const SAM = ['EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'];
-  const SUPT = ['OPERATIONAL_SUPPORT_AIRLIFT', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG', 'AFSOC'];
-  const TRNG = ['LOCAL_TRAINING', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG'];
-}
 }
