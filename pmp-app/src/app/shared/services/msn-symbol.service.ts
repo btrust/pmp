@@ -1,5 +1,5 @@
 export class MsnSymbolService {
-    sym12 = [
+    SYMBOL = [
         'A1',
         'A2',
         'A3',

@@ -2,7 +2,7 @@ export class Msn {
 numleg: string[];
 symbol: string = '';
 purpose: string = '';
-auth: any = '';
+auth: any = new Date().getFullYear().toString().substr(-2) + "-";
 tail: string = '';
 callsign: string = '';
 depICAO: string = '';

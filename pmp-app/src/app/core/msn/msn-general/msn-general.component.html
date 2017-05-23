@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <label for="msnPurpose">Purpose:</label>
-    <select class="form-control-lg" id="msnPurpose">
+    <select class="form-control-lg" id="msnPurpose" formControlName="msnPurpose">
       <option *ngFor="let purpose of PURPOSE">{{ purpose[0] }}</option>
     </select>
   </div>
@@ -34,3 +34,4 @@
     <span *ngIf="!msnGeneralForm.get('msnCallsign').valid && msnGeneralForm.get('msnCallsign').touched" class="help-block">Enter a valid Call Sign.</span>
   </div>
 </form>
+<h2 *ngIf="tailDetails"> {{tailDetails.selcal}}, {{tailDetails.hex}}, KC-135{{tailDetails.model}}</h2>
