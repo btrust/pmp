@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AngularIndexedDbService } from './../../../shared/services/angular-indexeddb.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Config } from './../../../shared/models/config';
+import { DatabaseService } from './../../../shared/services/database.service';
 
 @Injectable()
 
@@ -15,48 +16,35 @@ import { Config } from './../../../shared/models/config';
   styleUrls: ['./config.component.css']
 })
 export class ConfigComponent implements OnInit {
-
+  configDb: Config;
   configForm: FormGroup;
   NgbActiveModalService;
 
-  constructor(private angularIndexedDbService: AngularIndexedDbService, private router: Router, private ngbActiveModal: NgbActiveModal) {
+  constructor(
+    private angularIndexedDbService: AngularIndexedDbService,
+    private router: Router,
+    private ngbActiveModal: NgbActiveModal,
+    private databaseService: DatabaseService
+    ) {
+    this.configDb = this.databaseService.config;
   }
 
   ngOnInit() {
-
     this.configForm = new FormGroup({
-      'userName': new FormControl('', Validators.required),
-      'userDodid': new FormControl('',
+      'userName': new FormControl(this.configDb.name, Validators.required),
+      'userDodid': new FormControl(this.configDb.dodid,
         [
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
           Validators.pattern('^[0-9]+$')
         ]),
-      'userPosition': new FormControl('',
+      'userPosition': new FormControl(this.configDb.position,
         Validators.required),
-      'userSquadron': new FormControl('', Validators.required),
+      'userSquadron': new FormControl(this.configDb.squadron, Validators.required),
     });
-
-    this.getValues();
   }
 
-  getValues(): void {
-        const transaction = this.angularIndexedDbService.db.transaction(['storeConfig'], 'readonly');
-        const store = transaction.objectStore('storeConfig');
-        const request = store.get(1);
-        request.onsuccess = (e) => {
-           this.configForm.setValue({
-             userName: request.result.name,
-             userDodid: request.result.dodid,
-             userPosition: request.result.position,
-             userSquadron: request.result.squadron,
-           });
-           };
-        request.onerror = (e) => {
-            console.log('miss');
-        };
-}
   onSubmit() {
     if (!this.configForm.valid) {
       if (!this.configForm.get('userPosition').valid) {
@@ -73,26 +61,13 @@ export class ConfigComponent implements OnInit {
       }
       alert('Enter valid data.');
     } else {
-
-      const transaction = this.angularIndexedDbService.db.transaction(['storeConfig'], 'readwrite');
-      const store = transaction.objectStore('storeConfig');
-      const request = store.get(1);
-
-      request.onsuccess = (e) => {
-        let data = (<IDBOpenDBRequest>e.target).result;
-        data.name = this.configForm.get('userName').value;
-        data.dodid = this.configForm.get('userDodid').value;
-        data.position = this.configForm.get('userPosition').value;
-        data.squadron = this.configForm.get('userSquadron').value;
-        let requestUpdate = store.put(data);
-        console.log('Edited config');
-        this.router.navigate(['']);
-        this.ngbActiveModal.close();
-      };
-      request.onerror = (e) => {
-        alert('Something went wrong...')
-        console.log('Error', e.target);
-      };
-    }
+      this.configDb.name = this.configForm.get('userName').value;
+      this.configDb.dodid = this.configForm.get('userDodid').value;
+      this.configDb.position = this.configForm.get('userPosition').value;
+      this.configDb.squadron = this.configForm.get('userSquadron').value;
+      console.log('Edited config');
+      this.router.navigate(['']);
+      this.ngbActiveModal.close();
+    };
   }
 }

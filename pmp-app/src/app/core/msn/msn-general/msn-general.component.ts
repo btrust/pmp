@@ -1,8 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AngularIndexedDbService } from './../../../shared/services/angular-indexeddb.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+
+import {Observable} from 'rxjs/Observable';
+import { FormsModule } from '@angular/forms';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+
+import { AngularIndexedDbService } from './../../../shared/services/angular-indexeddb.service';
+import { TailService } from './../../../shared/services/tail.service';
+import { Purpose } from './../../../shared/models/purpose';
+
 
 @Component({
   selector: 'app-msn-general',
@@ -11,31 +21,19 @@ import { Router } from '@angular/router';
 })
 export class MsnGeneralComponent implements OnInit {
 msnGeneralForm: FormGroup;
-PURPOSE = [
-    ['AE', 'AEROMEDICAL_EVACUATION'],
-    ['AFRC', 'AFRC'],
-    ['AIREV', 'AEROMEDICAL_EVACUATION', 'ANG'],
-    ['AR', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'],
-    ['AREXER', 'CONTINGENCY_OPLAN_EXCERCISE'],
-    ['CHANL', 'CHANNEL'],
-    ['CNTNG', 'TANKER_AIR_REFUELING', 'CONTINGENCY_OPLAN_EXCERCISE'],
-    ['CORNET', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'],
-    ['EXER', 'TANKER_AIR_REFUELING', 'CONTINGENCY_OPLAN_EXCERCISE'],
-    ['GRDLFT', 'ANG'],
-    ['JAATT', 'JOINT_AIRBORNE_AIR_TRANSPORT_TRANING'],
-    ['JCSEXER', 'CONTINGENCY_OPLAN_EXERCISE'],
-    ['MISC', 'MISC'],
-    ['OPLAN', 'CONTINGENCY_OPLAN_EXERCISE'],
-    ['OPORD', 'CONTINGENCY_OPLAN_EXERCISE'],
-    ['SAAM', 'SPECIAL_ASSIGNMENT_AIRLIFT_MISSION'],
-    ['SAM', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION'],
-    ['SUPT', 'OPERATIONAL_SUPPORT_AIRLIFT', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG', 'AFSOC'],
-    ['TRNG', 'LOCAL_TRAINING', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG']
-];
-  constructor() {
+TAIL: any;
+tailDetails: object;
 
-
+  constructor(private tail: TailService) {
+    this.TAIL = this.tail.tailOnly();
    }
+
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.TAIL.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 
   ngOnInit() {
     this.msnGeneralForm = new FormGroup({
