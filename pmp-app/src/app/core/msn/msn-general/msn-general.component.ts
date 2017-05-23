@@ -33,9 +33,9 @@ export class MsnGeneralComponent implements OnInit {
   msnDb = new Msn;
 
   constructor(
+    private databaseService: DatabaseService,
     private msnTailService: MsnTailService,
     private msnPurposeService: MsnPurposeService,
-    private databaseService: DatabaseService,
     private msnSymbolService: MsnSymbolService
    ) {
     this.TAIL = this.msnTailService.tailOnly();
