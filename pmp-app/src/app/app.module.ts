@@ -10,13 +10,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Routes, Router, RouterModule } from '@angular/router';
 
-import { TailService } from './shared/services/tail.service';
+import { MsnTailService } from './shared/services/msn-tail.service';
 
 import { HeaderComponent } from './core/header/header.component';
 import { ConfigComponent } from './core/header/config/config.component';
 import { NewMsnComponent } from './core/header/new-msn/new-msn.component';
 import { HomeComponent } from './core/home/home.component';
-import { NgbdTypeaheadBasic } from './shared/components/typeahead-basic.component';
 
 import { MsnComponent } from './core/msn/msn.component';
 import { MsnGeneralComponent } from './core/msn/msn-general/msn-general.component';
@@ -33,7 +32,6 @@ const appRoutes: Routes = [
       { path: 'itinerary', component: MsnItineraryComponent },
     ]
   },
-
 ];
 
 @NgModule({
@@ -47,7 +45,6 @@ const appRoutes: Routes = [
     MsnAircrewComponent,
     MsnItineraryComponent,
     MsnComponent,
-    NgbdTypeaheadBasic
 
   ],
   imports: [
@@ -58,7 +55,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
   ],
-  providers: [AngularIndexedDbService, NgbActiveModal, NgbdTypeaheadBasic, TailService, DatabaseService],
+  providers: [AngularIndexedDbService, NgbActiveModal, DatabaseService],
   bootstrap: [AppComponent],
   entryComponents: [NewMsnComponent, ConfigComponent]
 })

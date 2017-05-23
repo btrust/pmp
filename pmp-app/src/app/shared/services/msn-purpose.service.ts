@@ -1,4 +1,4 @@
-export class Purpose {
+export class MsnPurposeService {
 
     PURPOSE = [
         ['AE', 'AEROMEDICAL_EVACUATION'],

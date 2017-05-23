@@ -1,4 +1,4 @@
-export class TailService {
+export class MsnTailService {
      TAIL = [
         { tail: '57-141}', selcal: 'JSDG', hex: 'AE04B0', model: 'R'},
         { tail: '57-1427', selcal: 'JSGP', hex: 'AE0358', model: 'R'},

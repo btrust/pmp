@@ -1,4 +1,4 @@
-export class Symbol {
+export class MsnSymbolService {
     sym12 = [
         'A1',
         'A2',

@@ -28,18 +28,16 @@ export class DatabaseService {
         const request = store.get(1);
 
         request.onsuccess = (e) => {
-            let data = (<IDBOpenDBRequest>e.target).result;
+            const data = (<IDBOpenDBRequest>e.target).result;
             this.config.name = data.name;
             this.config.dodid = data.dodid;
             this.config.position = data.position;
             this.config.squadron = data.squadron;
-            console.log(data);
         };
         request.onerror = (e) => {
             alert('Something went wrong...')
             console.log('Error', e.target);
         };
-        console.log(this.config);
     }
 
 }
