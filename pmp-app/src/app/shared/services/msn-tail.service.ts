@@ -1,6 +1,6 @@
 export class MsnTailService {
      TAIL = [
-        { tail: '57-141}', selcal: 'JSDG', hex: 'AE04B0', model: 'R'},
+        { tail: '57-1419', selcal: 'JSDG', hex: 'AE04B0', model: 'R'},
         { tail: '57-1427', selcal: 'JSGP', hex: 'AE0358', model: 'R'},
         { tail: '57-1428', selcal: 'JSGQ', hex: 'AE0470', model: 'R'},
         { tail: '57-1430', selcal: 'JSHK', hex: 'AE0150', model: 'R'},
