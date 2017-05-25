@@ -26,9 +26,9 @@ export class MsnGeneralComponent implements OnInit {
   msnGeneralForm: FormGroup;
   TAIL: any;
   PURPOSE: any;
-  PURPOSE_EXPAND: any;
-  PURPOSE_EXPAND_SELECT: any;
+  PURPOSE_CODES: any;
   SYMBOL: any;
+  purposes: any;
   tailDetails: object;
   msnDb = new Msn;
 
@@ -41,7 +41,7 @@ export class MsnGeneralComponent implements OnInit {
     this.TAIL = this.msnTailService.tailOnly();
     this.SYMBOL = this.msnSymbolService.SYMBOL;
     this.PURPOSE = this.msnPurposeService.PURPOSE;
-    this.PURPOSE_EXPAND = this.msnPurposeService.PURPOSE_EXPAND;
+    this.PURPOSE_CODES = this.msnPurposeService.codeOnly();
     this.msnDb = this.databaseService.msn;
   }
 
@@ -99,14 +99,14 @@ export class MsnGeneralComponent implements OnInit {
 
   setTailDetail(control: FormControl) {
     if(this.TAIL.indexOf(control.value)) {
-     this.tailDetails = this.msnTailService.tailDetails(control.value);;
+     this.tailDetails = this.msnTailService.tailDetails(control.value);
     } else {
       this.tailDetails = {};
     }
   }
 
-  showMsnDecode(control: FormControl) {
-    this.PURPOSE_EXPAND_SELECT = this.PURPOSE_EXPAND[control.value];
-  }
+showMsnDecode(control: FormControl) {
+  this.purposes = this.PURPOSE
+}
 
 }

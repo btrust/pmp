@@ -11,7 +11,7 @@
   <div class="form-group">
     <label for="msnPurpose">Purpose:</label>
     <select class="form-control-lg" id="msnPurpose" formControlName="msnPurpose">
-      <option *ngFor="let purpose of PURPOSE">{{ purpose[0] }}</option>
+      <option *ngFor="let codes of PURPOSE_CODES">{{ codes }}</option>
     </select>
   </div>
 
@@ -35,3 +35,6 @@
   </div>
 </form>
 <h2 *ngIf="tailDetails"> {{tailDetails.selcal}}, {{tailDetails.hex}}, KC-135{{tailDetails.model}}</h2>
+<!--<select>
+<option *ngFor="let x of PURPOSES">{{ x }}</option>
+</select>-->
