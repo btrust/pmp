@@ -12,9 +12,9 @@ export class DatabaseService {
     config = new Config;
     msn = new Msn;
     crw = new Array<Crw>();
-    Aar = new Array<Aar>();
-    Rcvr = new Array<Rcvr>();
-
+    aar = new Array<Aar>();
+    rcvr = new Array<Rcvr>();
+   
     constructor(private angularIndexedDbService: AngularIndexedDbService) {
         this.angularIndexedDbService.dbReady.subscribe(
             (status: boolean) => {if (status){

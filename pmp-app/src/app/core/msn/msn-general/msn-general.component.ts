@@ -23,13 +23,21 @@ import { Msn } from './../../../shared/models/msn';
   styleUrls: ['./msn-general.component.css']
 })
 export class MsnGeneralComponent implements OnInit {
+  
   msnGeneralForm: FormGroup;
-  TAIL: any;
-  PURPOSE: any;
-  PURPOSE_CODES: any;
-  SYMBOL: any;
+  //Array of Tail Objects
+  TAIL = [];
+  //TailOnly Array
+  tails = [];
+  //Single Tail Object
+  taildetails: object = null;
+  //Array of Purpose Objects
+  PURPOSE = [];
+
   purposes: any;
-  tailDetails: object;
+  //Array of Symbols.
+  SYMBOL: any;
+
   msnDb = new Msn;
 
   constructor(
@@ -37,11 +45,11 @@ export class MsnGeneralComponent implements OnInit {
     private msnTailService: MsnTailService,
     private msnPurposeService: MsnPurposeService,
     private msnSymbolService: MsnSymbolService
-   ) {
-    this.TAIL = this.msnTailService.tailOnly();
+  ) {
+    this.TAIL = this.msnTailService.TAIL;
+    this.tails = this.tailsOnly(this.TAIL);
     this.SYMBOL = this.msnSymbolService.SYMBOL;
     this.PURPOSE = this.msnPurposeService.PURPOSE;
-    this.PURPOSE_CODES = this.msnPurposeService.codeOnly();
     this.msnDb = this.databaseService.msn;
   }
 
@@ -50,7 +58,7 @@ export class MsnGeneralComponent implements OnInit {
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 2 ? []
-        : this.TAIL.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+        : this.tails.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 
   ngOnInit() {
     this.msnGeneralForm = new FormGroup({
@@ -65,7 +73,7 @@ export class MsnGeneralComponent implements OnInit {
       'msnPurpose': new FormControl(this.msnDb.purpose,
         [
           Validators.required,
-          this.showMsnDecode.bind(this)
+          // this.showMsnDecodeOptions.bind(this)
         ]),
       'msnAuth': new FormControl(this.msnDb.auth, [
         Validators.required,
@@ -78,7 +86,7 @@ export class MsnGeneralComponent implements OnInit {
         Validators.minLength(7),
         Validators.maxLength(8),
         Validators.pattern('^[0-9-]+$'),
-        this.setTailDetail.bind(this)
+        this.showTailDetail.bind(this)
       ]),
       'msnCallsign': new FormControl(this.msnDb.callsign, [
         Validators.required,
@@ -90,6 +98,11 @@ export class MsnGeneralComponent implements OnInit {
 
   }
 
+  // showMsnDecodeOptions(control: FormControl) {
+  //   let options;
+  //   options = this.PURPOSE.find(x => x.code === control.value);
+  //  }
+
   symbolValid(control: FormControl): {[s: string]: boolean} {
     if (this.SYMBOL.indexOf(control.value.substring(0,2)) > 0) {
       return null;
@@ -97,16 +110,27 @@ export class MsnGeneralComponent implements OnInit {
     return {'symbolNotValid': true}
   }
 
-  setTailDetail(control: FormControl) {
-    if(this.TAIL.indexOf(control.value)) {
-     this.tailDetails = this.msnTailService.tailDetails(control.value);
+  showTailDetail(control: FormControl) {
+    //If no match is found control.value = -1... therefore we use the > 0 condition.
+    if (this.tails.indexOf(control.value) > 0) {
+      this.taildetails = this.extractTailDetails(this.TAIL, control.value);
     } else {
-      this.tailDetails = {};
+      this.taildetails = null;
     }
   }
 
-showMsnDecode(control: FormControl) {
-  this.purposes = this.PURPOSE
-}
+  extractTailDetails(tailDB, tailnumber: string) {
+    let tailDetail: object;
+    tailDetail = tailDB.find(x => x.tail === tailnumber);
+    return tailDetail;
+  }
+
+  tailsOnly(taildb) {
+    const tailOnlyArray = [];
+    taildb.forEach(element => {
+      tailOnlyArray.push(element.tail);
+    });
+    return tailOnlyArray;
+  }
 
 }

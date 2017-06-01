@@ -145,7 +145,7 @@ export class MsnTailService {
         { tail: '59-1470', selcal: 'KMPR', hex: 'AE04C3', model: 'T'},
         { tail: '59-1471', selcal: 'KMPS', hex: 'AE07A5', model: 'T'},
         { tail: '59-1472', selcal: 'KMQR', hex: 'AE0387', model: 'R'},
-        { tail: '59-1474', selcal: 'KMRS', hex: 'AE07A6', model: 'RT'},
+        { tail: '59-1474', selcal: 'KMRS', hex: 'AE07A6', model: 'T'},
         { tail: '59-1475', selcal: 'KPLS', hex: 'AE04C4', model: 'R'},
         { tail: '59-1476', selcal: 'KPQR', hex: 'AE04C5', model: 'R'},
         { tail: '59-1478', selcal: 'KPRS', hex: 'AE04E5', model: 'R'},
@@ -421,18 +421,18 @@ export class MsnTailService {
         { tail: '64-14840', selcal: 'JLQS', hex: 'AE0272', model: 'R'},
     ];
 
-tailOnly() {
-const tailOnlyArray = [];
-this.TAIL.forEach(element => {
-    tailOnlyArray.push(element.tail);
-});
-return tailOnlyArray;
-}
+// tailOnly() {
+// const tailOnlyArray = [];
+// this.TAIL.forEach(element => {
+//     tailOnlyArray.push(element.tail);
+// });
+// return tailOnlyArray;
+// }
 
-tailDetails(tailnumber:string) {
-  let tailDetails: object;
-  tailDetails = this.TAIL.find(x => x.tail === tailnumber);
-  return tailDetails;
- }
+// tailDetails(tailnumber:string) {
+//   let tailDetails: object;
+//   tailDetails = this.TAIL.find(x => x.tail === tailnumber);
+//   return tailDetails;
+//  }
 
 }

@@ -22,33 +22,33 @@ export class MsnPurposeService {
         { code: 'TRNG', purpose: ['LOCAL_TRAINING', 'EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION', 'ANG']},
  ];
 
-codeOnly() {
-const codeOnlyArray = [];
-this.PURPOSE.forEach(element => {
-    codeOnlyArray.push(element.code);
-});
-return codeOnlyArray;
-}
+// codeOnly() {
+// const codeOnlyArray = [];
+// this.PURPOSE.forEach(element => {
+//     codeOnlyArray.push(element.code);
+// });
+// return codeOnlyArray;
+// }
 
-purposes(code:string) {
-  let codePurposes: object;
-  codePurposes = this.PURPOSE.find(x => x.code === code);
-  return codePurposes;
- }
+// purposes(code:string) {
+//   let codePurposes: object;
+//   codePurposes = this.PURPOSE.find(x => x.code === code);
+//   return codePurposes;
+//  }
 
 
 
-DECODE_MAP = {
-        CHANNEL: 'chanelDecode',
-        SPECIAL_ASSIGNMENT_AIRLIFT_MISSION: 'saamDecode',
-        JOINT_AIRBORNE_AIR_TRANSPORT_TRANING: 'jaattDecode',
-        AEROMEDICAL_EVACUATION: ['airevOCONUSDecode', 'airevCONUSDecode'],
-        CONTINGENCY_OPLAN_EXERCISE: 'coeDecode',
-        OPERATIONAL_SUPPORT_AIRLIFT: 'osaDecode',
-        EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION: 'samDecode',
-        TANKER_AIR_REFUELING: 'aarDecode',
-        LOCAL_TRAINING: 'nodecodenow',
-}
+// DECODE_MAP = {
+//         CHANNEL: 'chanelDecode',
+//         SPECIAL_ASSIGNMENT_AIRLIFT_MISSION: 'saamDecode',
+//         JOINT_AIRBORNE_AIR_TRANSPORT_TRANING: 'jaattDecode',
+//         AEROMEDICAL_EVACUATION: ['airevOCONUSDecode', 'airevCONUSDecode'],
+//         CONTINGENCY_OPLAN_EXERCISE: 'coeDecode',
+//         OPERATIONAL_SUPPORT_AIRLIFT: 'osaDecode',
+//         EXECUTIVE_AIRCRAFT_SPECIAL_AIR_MISSION: 'samDecode',
+//         TANKER_AIR_REFUELING: 'aarDecode',
+//         LOCAL_TRAINING: 'nodecodenow',
+// }
 
 }
 

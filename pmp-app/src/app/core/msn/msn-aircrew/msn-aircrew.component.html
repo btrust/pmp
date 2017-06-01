@@ -1,3 +1,58 @@
-<p>
-  msn-aircrew works!
-</p>
+     	<h3>Crewmembers:</h3>
+      
+	      <table class=''>
+	      	<thead>
+	      		<tr>
+	      			<th>DoD ID</th> 
+	      			<th>Name</th>
+	      			<th>Position</th>
+	      			<th>Squadron</th>
+	      			<th>A-Code</th>
+	      			<th></th>
+	      		</tr>	      	
+          </thead>
+	      	<tbody class=''>
+
+
+      <tr class=''>
+			<td><span>1234567890</span></td>
+			<td><span>Tiger Woods</span></td>
+			<td><span>IP</span></td>
+			<td><span>92 ARS</span></td>
+      <td>RADIO</td>
+			<td>Delete</td>
+      </tr>
+	      	</tbody>
+	      </table>
+
+<form [formGroup]="msnAircrewForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="crwDodid">DoD ID:</label>
+    <input formControlName="crwDodid" type="tel" class="form-control-lg" id="crwDodid" placeholder="">
+    <span *ngIf="!msnAircrewForm.get('crwDodid').valid && msnAircrewForm.get('crwDodid').touched" class="help-block">Enter a valid DoD ID.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="crwName">Name:</label>
+    <input formControlName="crwName" type="text" class="form-control-lg" id="crwName" placeholder="">
+    <span *ngIf="!msnAircrewForm.get('crwName').valid && msnAircrewForm.get('crwName').touched" class="help-block">Enter a valid Name.</span>
+  </div>
+
+    <div class="form-group">
+    <label for="crwPosition">Duty Postion:</label>
+    <select class="form-control-lg" id="crwPosition" formControlName="crwPosition">
+      <!--<option *ngFor="let codes of PURPOSE">{{ codes.code }}</option>-->
+    </select>
+  </div>
+
+    <div class="form-group">
+    <label for="crewSquadron">Squadron:</label>
+    <select class="form-control-lg" id="crwSquadron" formControlName="crwSquadron">
+      <!--<option *ngFor="let codes of PURPOSE">{{ codes.code }}</option>-->
+    </select>
+  </div>
+   <button type="submit" class="btn btn-primary">Add</button>
+
+
+
+</form>
