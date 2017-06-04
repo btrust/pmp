@@ -29,24 +29,24 @@ export class MsnAircrewComponent implements OnInit {
 
   ngOnInit() {
     this.msnAircrewForm = new FormGroup({
-      'crwDodid': new FormControl(this.crw.dodid,
+      'dodid': new FormControl(this.crw.dodid,
         [
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
           Validators.pattern('^[0-9]+$')
         ]),
-      'crwName': new FormControl(this.crw.name,
+      'name': new FormControl(this.crw.name,
         [
           Validators.required
         ]),
-      'crwPosition': new FormControl(this.crw.position, [
+      'position': new FormControl(this.crw.position, [
         Validators.required,
         Validators.minLength(7),
         Validators.maxLength(7),
         Validators.pattern('^[0-9-]+$')
       ]),
-      'crwSquadron': new FormControl(this.crw.squadron, [
+      'squadron': new FormControl(this.crw.squadron, [
         Validators.required
       ]),
     });
@@ -54,7 +54,7 @@ export class MsnAircrewComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('sup');
+    console.log(this.msnAircrewForm);
   }
 
 }

@@ -62,7 +62,7 @@ export class MsnGeneralComponent implements OnInit {
 
   ngOnInit() {
     this.msnGeneralForm = new FormGroup({
-      'msnSymbol': new FormControl(this.msnDb.symbol,
+      'symbol': new FormControl(this.msnDb.symbol,
         [
           Validators.required,
           Validators.minLength(4),
@@ -70,25 +70,25 @@ export class MsnGeneralComponent implements OnInit {
           Validators.pattern('^[0-9a-zA-Z]+$'),
           this.symbolValid.bind(this)
         ]),
-      'msnPurpose': new FormControl(this.msnDb.purpose,
+      'purpose': new FormControl(this.msnDb.purpose,
         [
           Validators.required,
           // this.showMsnDecodeOptions.bind(this)
         ]),
-      'msnAuth': new FormControl(this.msnDb.auth, [
+      'auth': new FormControl(this.msnDb.auth, [
         Validators.required,
         Validators.minLength(7),
         Validators.maxLength(7),
         Validators.pattern('^[0-9-]+$')
       ]),
-      'msnTail': new FormControl(this.msnDb.tail, [
+      'tail': new FormControl(this.msnDb.tail, [
         Validators.required,
         Validators.minLength(7),
         Validators.maxLength(8),
         Validators.pattern('^[0-9-]+$'),
         this.showTailDetail.bind(this)
       ]),
-      'msnCallsign': new FormControl(this.msnDb.callsign, [
+      'callsign': new FormControl(this.msnDb.callsign, [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(8),

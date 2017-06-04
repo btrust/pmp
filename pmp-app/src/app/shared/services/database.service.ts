@@ -10,7 +10,7 @@ import { AngularIndexedDbService } from './../services/angular-indexeddb.service
 export class DatabaseService {
 
     config = new Config;
-    msn = new Msn;
+    msn = new Array<Msn>();
     crw = new Array<Crw>();
     aar = new Array<Aar>();
     rcvr = new Array<Rcvr>();

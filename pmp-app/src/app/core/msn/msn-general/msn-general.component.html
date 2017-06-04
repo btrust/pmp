@@ -3,35 +3,35 @@
 
 <form [formGroup]="msnGeneralForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="msnSymbol">Symbol:</label>
-    <input formControlName="msnSymbol" type="text" class="form-control-lg" id="msnSymbol" placeholder="">
-    <span *ngIf="!msnGeneralForm.get('msnSymbol').valid && msnGeneralForm.get('msnSymbol').touched" class="help-block">Enter a valid Symbol.</span>
+    <label for="symbol">Symbol:</label>
+    <input formControlName="symbol" type="text" class="form-control-lg" id="symbol" placeholder="">
+    <span *ngIf="!msnGeneralForm.get('symbol').valid && msnGeneralForm.get('symbol').touched" class="help-block">Enter a valid Symbol.</span>
   </div>
 
   <div class="form-group">
-    <label for="msnPurpose">Purpose:</label>
-    <select class="form-control-lg" id="msnPurpose" formControlName="msnPurpose">
+    <label for="purpose">Purpose:</label>
+    <select class="form-control-lg" id="purpose" formControlName="purpose">
       <option *ngFor="let codes of PURPOSE">{{ codes.code }}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="msnAuth">Auth:</label>
-    <input formControlName="msnAuth" type="tel" class="form-control-lg" id="msnAuth" placeholder="">
-    <span *ngIf="!msnGeneralForm.get('msnAuth').valid && msnGeneralForm.get('msnAuth').touched" class="help-block">Enter a valid Auth.</span>
+    <input formControlName="auth" type="tel" class="form-control-lg" id="auth" placeholder="">
+    <span *ngIf="!msnGeneralForm.get('auth').valid && msnGeneralForm.get('auth').touched" class="help-block">Enter a valid Auth.</span>
   </div>
 
   <div class="form-group">
-    <label for="msnTail">Tail:</label>
-    <input formControlName="msnTail" type="tel" class="form-control-lg" id="msnTail" placeholder="" [ngbTypeahead]="search">
-    <span *ngIf="!msnGeneralForm.get('msnTail').valid && msnGeneralForm.get('msnTail').touched" class="help-block">Enter a valid Tail.</span>
+    <label for="tail">Tail:</label>
+    <input formControlName="tail" type="tel" class="form-control-lg" id="tail" placeholder="" [ngbTypeahead]="search">
+    <span *ngIf="!msnGeneralForm.get('tail').valid && msnGeneralForm.get('tail').touched" class="help-block">Enter a valid Tail.</span>
   </div>
 
 
   <div class="form-group">
-    <label for="msnCallsign">Call Sign:</label>
-    <input formControlName="msnCallsign" type="text" class="form-control-lg" id="msnCallsign" placeholder="AFRCE01">
-    <span *ngIf="!msnGeneralForm.get('msnCallsign').valid && msnGeneralForm.get('msnCallsign').touched" class="help-block">Enter a valid Call Sign.</span>
+    <label for="callsign">Call Sign:</label>
+    <input formControlName="callsign" type="text" class="form-control-lg" id="callsign" placeholder="AFRCE01">
+    <span *ngIf="!msnGeneralForm.get('callsign').valid && msnGeneralForm.get('callsign').touched" class="help-block">Enter a valid Call Sign.</span>
   </div>
 </form>
 <h2 *ngIf="taildetails"> {{taildetails.selcal}}, {{taildetails.hex}}, KC-135{{taildetails.model}}</h2>
