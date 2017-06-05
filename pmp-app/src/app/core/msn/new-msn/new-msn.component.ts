@@ -12,7 +12,11 @@ import { AngularIndexedDbService } from './../../../shared/services/angular-inde
 })
 export class NewMsnComponent implements OnInit {
   newMsnForm: FormGroup;
-  constructor(private router: Router, private angularIndexedDbService: AngularIndexedDbService, private ngbActiveModal: NgbActiveModal) { }
+  constructor(
+    private router: Router,
+    private angularIndexedDbService: AngularIndexedDbService,
+    private ngbActiveModal: NgbActiveModal
+    ) { }
 
   ngOnInit() {
     this.newMsnForm = new FormGroup({

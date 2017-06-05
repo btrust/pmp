@@ -1,3 +1,4 @@
+import { AddMsnAircrewComponent } from './add-msn-aircrew/add-msn-aircrew.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,9 +9,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { AngularIndexedDbService } from './../../../shared/services/angular-indexeddb.service';
 import { DatabaseService } from './../../../shared/services/database.service';
 import { Crw } from './../../../shared/models/crw';
+
+import { ConfigComponent } from './../../../shared/components/config/config.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-msn-aircrew',
@@ -19,42 +22,36 @@ import { Crw } from './../../../shared/models/crw';
 })
 export class MsnAircrewComponent implements OnInit {
 
-  msnAircrewForm: FormGroup;
   crwDb = new Array<Crw>();
-  crw = new Crw;
 
-  constructor(private databaseService: DatabaseService) {
+  constructor(
+    private databaseService: DatabaseService,
+    private modalService: NgbModal
+  ) {
     this.crwDb = this.databaseService.crw;
-   }
+  }
 
   ngOnInit() {
-    this.msnAircrewForm = new FormGroup({
-      'dodid': new FormControl(this.crw.dodid,
-        [
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(10),
-          Validators.pattern('^[0-9]+$')
-        ]),
-      'name': new FormControl(this.crw.name,
-        [
-          Validators.required
-        ]),
-      'position': new FormControl(this.crw.position, [
-        Validators.required,
-        Validators.minLength(7),
-        Validators.maxLength(7),
-        Validators.pattern('^[0-9-]+$')
-      ]),
-      'squadron': new FormControl(this.crw.squadron, [
-        Validators.required
-      ]),
-    });
 
   }
 
-  onSubmit() {
-    console.log(this.msnAircrewForm);
+  addCrewmember() {
+    const modalRef = this.modalService.open(AddMsnAircrewComponent);
+  }
+
+  onDelete(index: number) {
+    if (index > -1) {
+      this.crwDb.splice(index, 1);
+    }
+  }
+
+  setAlfa(i: number) {
+    this.crwDb[i].alfa = true;
+    for (let x = 0; x < this.crwDb.length; x++) {
+      if (x !== i) {
+        this.crwDb[x].alfa = false;
+      }
+    }
   }
 
 }

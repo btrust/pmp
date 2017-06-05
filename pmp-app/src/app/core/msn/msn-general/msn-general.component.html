@@ -1,44 +1,107 @@
 <h2>8UN42TB01232</h2>
-<h5>Leg: 1</h5>
 
-<form [formGroup]="msnGeneralForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="symbol">Symbol:</label>
-    <input formControlName="symbol" type="text" class="form-control-lg" id="symbol" placeholder="">
-    <span *ngIf="!msnGeneralForm.get('symbol').valid && msnGeneralForm.get('symbol').touched" class="help-block">Enter a valid Symbol.</span>
+<div class="container justify-content-center">
+  <form [formGroup]="msnGeneralForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+
+      <div class="col-xs col-sm-3">
+        <div class="form-group d-flex flex-column">
+          <label for="symbol">Symbol:</label>
+          <input formControlName="symbol" type="text" class="form-control-lg" id="symbol" placeholder="" [(ngModel)]="msn.symbol">
+          <span *ngIf="!msnGeneralForm.get('symbol').valid && msnGeneralForm.get('symbol').touched" class="help-block">Enter a valid Symbol.</span>
+        </div>
+      </div>
+
+      <div class="col-xs col-md-3">
+        <div class="form-group d-flex flex-column">
+          <label for="purpose">Purpose:</label>
+          <select class="form-control-lg" id="purpose" formControlName="purpose">
+             <option value=""></option>
+             <option value="AE">AE</option>
+             <option value="AFRC">AFRC</option>
+             <option value="AIREV"> AIREV</option>
+             <option value="AR">AR</option>
+             <option value="AREXER">AREXER</option>
+             <option value="CHANL">CHANL</option>
+             <option value="CNTNG">CNTNG</option>
+             <option value="CORNET">CORNET</option>
+             <option value="EXER">EXER</option>
+             <option value="GRDLFT">GRDLFT</option>
+             <option value="JAATT">JAATT</option>
+             <option value="JCSEXER">JCSEXER</option>
+             <option value="MISC">MISC</option>
+             <option value="OPLAN">OPLAN</option>
+             <option value="OPORD">OPORD</option>
+             <option value="SAAM">SAAM</option>
+             <option value="SAM">SAM</option>
+             <option value="SUPT">SUPT</option>
+             <option value="TRNG">TRNG</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-xs col-md-4 offset-md-2">
+        <div class="form-group d-flex flex-column">
+          <label for="msnAuth">Auth:</label>
+          <input formControlName="auth" type="tel" class="form-control-lg" id="auth" placeholder="" [(ngModel)]="msn.auth">
+          <span *ngIf="!msnGeneralForm.get('auth').valid && msnGeneralForm.get('auth').touched" class="help-block">Enter a valid Auth.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs col-md-4">
+        <div class="form-group d-flex flex-column">
+          <label for="tail">Tail:</label>
+          <input formControlName="tail" type="tel" class="form-control-lg" id="tail" placeholder="" [ngbTypeahead]="search" [(ngModel)]="msn.tail">
+          <span *ngIf="!msnGeneralForm.get('tail').valid && msnGeneralForm.get('tail').touched" class="help-block">Enter a valid Tail.</span>
+        </div>
+      </div>
+
+      <div class="col-xs col-md-4 offset-md-4">
+        <div class="form-group d-flex flex-column">
+          <label for="callsign">Call Sign:</label>
+          <input formControlName="callsign" type="text" class="form-control-lg" id="callsign" placeholder="AFRCE01" [(ngModel)]="msn.callsign">
+          <span *ngIf="!msnGeneralForm.get('callsign').valid && msnGeneralForm.get('callsign').touched" class="help-block">Enter a valid C/S.</span>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="col">
+      <h2>Tail Details:</h2>
+      <div *ngIf="taildetails">
+        <h3>KC-135{{taildetails.model}}</h3>
+        <h4>Selcal: {{taildetails.selcal}} </h4>
+        <h4>Hex: {{taildetails.hex}} </h4>
+        <h4>Mode S:</h4>
+        <h4>Code:</h4>
+        <h4>Serial:</h4>
+        <h4>Phone:</h4>
+        <h4>PIN:</h4>
+        <h4>MPRS:</h4>
+        <h4>DAMASAT:</h4>
+        <h4>AAR:</h4>
+
+      </div>
+    </div>
+
+    <div class="col">
+      <h3>Decode:</h3>
+      <label for="decodeselector"></label>
+      <select class="form-control-lg" id="decodeselector" *ngFor="let codes of purposes; let i = index">
+             <option>{{ codes[0] }}</option>
+             <option *ngIf="codes[1]">{{ codes[1] }}</option>
+             <option *ngIf="codes[2]">{{ codes[2] }}</option>
+             <option *ngIf="codes[3]">{{ codes[3] }}</option>
+             <option *ngIf="codes[4]">{{ codes[4] }}</option>
+          </select>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="purpose">Purpose:</label>
-    <select class="form-control-lg" id="purpose" formControlName="purpose">
-      <option *ngFor="let codes of PURPOSE">{{ codes.code }}</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="msnAuth">Auth:</label>
-    <input formControlName="auth" type="tel" class="form-control-lg" id="auth" placeholder="">
-    <span *ngIf="!msnGeneralForm.get('auth').valid && msnGeneralForm.get('auth').touched" class="help-block">Enter a valid Auth.</span>
-  </div>
-
-  <div class="form-group">
-    <label for="tail">Tail:</label>
-    <input formControlName="tail" type="tel" class="form-control-lg" id="tail" placeholder="" [ngbTypeahead]="search">
-    <span *ngIf="!msnGeneralForm.get('tail').valid && msnGeneralForm.get('tail').touched" class="help-block">Enter a valid Tail.</span>
-  </div>
-
-
-  <div class="form-group">
-    <label for="callsign">Call Sign:</label>
-    <input formControlName="callsign" type="text" class="form-control-lg" id="callsign" placeholder="AFRCE01">
-    <span *ngIf="!msnGeneralForm.get('callsign').valid && msnGeneralForm.get('callsign').touched" class="help-block">Enter a valid Call Sign.</span>
-  </div>
-</form>
-<h2 *ngIf="taildetails"> {{taildetails.selcal}}, {{taildetails.hex}}, KC-135{{taildetails.model}}</h2>
-
-
-<!--<div *ngIf="purposes">
-<<select>
-<option *ngFor="let x of purposes">{{ x }}</option>
-</select> 
-</div>-->
+  <button (click)="stuff()">click</button>

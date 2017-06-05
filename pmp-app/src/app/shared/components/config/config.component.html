@@ -5,19 +5,19 @@
   <form [formGroup]="configForm" (ngSubmit)="onSubmit()">
     <div class="container">
       <div class="form-group">
-        <label for="userName">Name:</label>
-        <input formControlName="userName" type="text" class="form-control" id="userName" aria-describedby="nameHelp" placeholder="Enter Name">
-        <span *ngIf="!configForm.get('userName').valid && configForm.get('userName').touched" class="help-block">Enter a valid user name.</span>
+        <label for="name">Name:</label>
+        <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Name">
+        <span *ngIf="!configForm.get('name').valid && configForm.get('name').touched" class="help-block">Enter a valid user name.</span>
       </div>
       <div class="form-group">
-        <label for="userDodid">DoD ID:</label>
-        <input formControlName="userDodid" type="tel" class="form-control" id="userDodid" placeholder="DoD ID">
+        <label for="dodid">DoD ID:</label>
+        <input formControlName="dodid" type="tel" class="form-control" id="dodid" placeholder="DoD ID">
         <small id="dodidHelp" class="form-text text-muted">Ten-digit number located on the back of your CAC.</small>
-        <span *ngIf="!configForm.get('userDodid').valid && configForm.get('userDodid').touched" class="help-block">Enter a valid DoD ID.</span>
+        <span *ngIf="!configForm.get('dodid').valid && configForm.get('dodid').touched" class="help-block">Enter a valid DoD ID.</span>
       </div>
       <div class="form-group">
-        <label for="userPosition">Duty Position:</label>
-        <select formControlName="userPosition" class="form-control" id="userPosition">
+        <label for="position">Duty Position:</label>
+        <select formControlName="position" class="form-control" id="position">
         <option value ="">Select Position</option>
 			  <optgroup label="Pilots">
 				  <option value="EP">Evaluator Pilot</option>
@@ -33,12 +33,12 @@
 				  <option value="FB">First Boom</option>
 			  </optgroup>
     </select>
-        <span *ngIf="!configForm.get('userPosition').valid && configForm.get('userPosition').touched" class="help-block">Must select a position.</span>
+        <span *ngIf="!configForm.get('position').valid && configForm.get('position').touched" class="help-block">Must select a position.</span>
       </div>
 
       <div class="form-group">
-        <label for="userSquadron">Squadron:</label>
-        <select formControlName="userSquadron" class="form-control" id="userSquadron">
+        <label for="squadron">Squadron:</label>
+        <select formControlName="squadron" class="form-control" id="squadron">
           <option value ="">Select Squadron</option>
 				  <option value="92">92 ARS</option>
 				  <option value="93">93 ARS</option>
@@ -46,7 +46,7 @@
           <option value="116">116 ARS</option>
           <option value="509">509 WPS</option>
     </select>
-        <span *ngIf="!configForm.get('userSquadron').valid && configForm.get('userSquadron').touched" class="help-block">Must select a squadron.</span>
+        <span *ngIf="!configForm.get('squadron').valid && configForm.get('squadron').touched" class="help-block">Must select a squadron.</span>
 
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>

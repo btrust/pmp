@@ -1,58 +1,29 @@
-     	<h3>Crewmembers:</h3>
-      
-	      <table class="table table-striped">
-	      	<thead>
-	      		<tr>
-	      			<th>DoD ID</th> 
-	      			<th>Name</th>
-	      			<th>Position</th>
-	      			<th>Squadron</th>
-	      			<th>A-Code</th>
-	      			<th></th>
-	      		</tr>	      	
-          </thead>
-	      	<tbody class=''>
+<h3>Crewmembers:</h3>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>DoD ID</th>
+			<th>Name</th>
+			<th>Position</th>
+			<th>Squadron</th>
+			<th>A-Code</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody class=''>
 
 
-      <tr class=''>
-			<td><span>1234567890</span></td>
-			<td><span>Tiger Woods</span></td>
-			<td><span>IP</span></td>
-			<td><span>92 ARS</span></td>
-      <td>RADIO</td>
-			<td>Delete</td>
-      </tr>
-	      	</tbody>
-	      </table>
+		<tr *ngFor="let crewmember of crwDb; let i = index">
+			<th>{{ crewmember.dodid }} </th>
+			<th>{{ crewmember.name }}</th>
+			<th>{{ crewmember.position }}</th>
+			<th>{{ crewmember.squadron }}</th>
 
-<form [formGroup]="msnAircrewForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="dodid">DoD ID:</label>
-    <input formControlName="dodid" type="tel" class="form-control-lg" id="dodid" placeholder="">
-    <span *ngIf="!msnAircrewForm.get('dodid').valid && msnAircrewForm.get('dodid').touched" class="help-block">Enter a valid DoD ID.</span>
-  </div>
-
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input formControlName="name" type="text" class="form-control-lg" id="name" placeholder="">
-    <span *ngIf="!msnAircrewForm.get('name').valid && msnAircrewForm.get('name').touched" class="help-block">Enter a valid Name.</span>
-  </div>
-
-    <div class="form-group">
-    <label for="position">Duty Postion:</label>
-    <select class="form-control-lg" id="position" formControlName="position">
-      <!--<option *ngFor="let codes of PURPOSE">{{ codes.code }}</option>-->
-    </select>
-  </div>
-
-    <div class="form-group">
-    <label for="squadron">Squadron:</label>
-    <select class="form-control-lg" id="squadron" formControlName="squadron">
-      <!--<option *ngFor="let codes of PURPOSE">{{ codes.code }}</option>-->
-    </select>
-  </div>
-   <button type="submit" class="btn btn-primary">Add</button>
-
-
-
-</form>
+			<th><input type="radio" name="radioACode" value="{{ crewmember.alfa }}" [checked]="crewmember.alfa" (click)="setAlfa(i)"/></th>
+			<th><button class="btn btn-danger btn-lg" (click)="onDelete(i)">Delete</button></th>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<button class="btn btn-primary btn-lg btn-block" (click)='addCrewmember()'>Add Crewmember</button>

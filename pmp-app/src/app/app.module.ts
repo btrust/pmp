@@ -13,14 +13,15 @@ import { Routes, Router, RouterModule } from '@angular/router';
 import { MsnTailService } from './shared/services/msn-tail.service';
 
 import { HeaderComponent } from './core/header/header.component';
-import { ConfigComponent } from './core/header/config/config.component';
-import { NewMsnComponent } from './core/header/new-msn/new-msn.component';
+import { ConfigComponent } from './shared/components/config/config.component';
+import { NewMsnComponent } from './core/msn/new-msn/new-msn.component';
 import { HomeComponent } from './core/home/home.component';
 
 import { MsnComponent } from './core/msn/msn.component';
 import { MsnGeneralComponent } from './core/msn/msn-general/msn-general.component';
 import { MsnAircrewComponent } from './core/msn/msn-aircrew/msn-aircrew.component';
 import { MsnItineraryComponent } from './core/msn/msn-itinerary/msn-itinerary.component';
+import { AddMsnAircrewComponent } from './core/msn/msn-aircrew/add-msn-aircrew/add-msn-aircrew.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     MsnAircrewComponent,
     MsnItineraryComponent,
     MsnComponent,
+    AddMsnAircrewComponent,
 
   ],
   imports: [
@@ -57,6 +59,6 @@ const appRoutes: Routes = [
   ],
   providers: [AngularIndexedDbService, NgbActiveModal, DatabaseService],
   bootstrap: [AppComponent],
-  entryComponents: [NewMsnComponent, ConfigComponent]
+  entryComponents: [ConfigComponent, AddMsnAircrewComponent, NewMsnComponent]
 })
 export class AppModule { }

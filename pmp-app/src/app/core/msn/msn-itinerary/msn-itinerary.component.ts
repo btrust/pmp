@@ -25,7 +25,7 @@ export class MsnItineraryComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
   ) {
-    this.msnDb = this.databaseService.msn;
+    // this.msnDb = this.databaseService.msn;
   }
 
   ngOnInit() {

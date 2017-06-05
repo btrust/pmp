@@ -16,6 +16,7 @@ import { DatabaseService } from './../../../shared/services/database.service';
   styleUrls: ['./config.component.css']
 })
 export class ConfigComponent implements OnInit {
+
   configDb: Config;
   configForm: FormGroup;
   NgbActiveModalService;
@@ -31,40 +32,40 @@ export class ConfigComponent implements OnInit {
 
   ngOnInit() {
     this.configForm = new FormGroup({
-      'userName': new FormControl(this.configDb.name, Validators.required),
-      'userDodid': new FormControl(this.configDb.dodid,
+      'name': new FormControl(this.configDb.name, Validators.required),
+      'dodid': new FormControl(this.configDb.dodid,
         [
           Validators.required,
           Validators.minLength(10),
           Validators.maxLength(10),
           Validators.pattern('^[0-9]+$')
         ]),
-      'userPosition': new FormControl(this.configDb.position,
+      'position': new FormControl(this.configDb.position,
         Validators.required),
-      'userSquadron': new FormControl(this.configDb.squadron, Validators.required),
+      'squadron': new FormControl(this.configDb.squadron, Validators.required),
     });
   }
 
   onSubmit() {
     if (!this.configForm.valid) {
-      if (!this.configForm.get('userPosition').valid) {
-        this.configForm.get('userPosition').markAsTouched();
+      if (!this.configForm.get('position').valid) {
+        this.configForm.get('position').markAsTouched();
       }
-      if (!this.configForm.get('userSquadron').valid) {
-        this.configForm.get('userSquadron').markAsTouched();
+      if (!this.configForm.get('squadron').valid) {
+        this.configForm.get('squadron').markAsTouched();
       }
-      if (!this.configForm.get('userName').valid) {
-        this.configForm.get('userName').markAsTouched();
+      if (!this.configForm.get('name').valid) {
+        this.configForm.get('name').markAsTouched();
       }
-      if (!this.configForm.get('userDodid').valid) {
-        this.configForm.get('userDodid').markAsTouched();
+      if (!this.configForm.get('dodid').valid) {
+        this.configForm.get('dodid').markAsTouched();
       }
       alert('Enter valid data.');
     } else {
-      this.configDb.name = this.configForm.get('userName').value;
-      this.configDb.dodid = this.configForm.get('userDodid').value;
-      this.configDb.position = this.configForm.get('userPosition').value;
-      this.configDb.squadron = this.configForm.get('userSquadron').value;
+      this.configDb.name = this.configForm.get('name').value;
+      this.configDb.dodid = this.configForm.get('dodid').value;
+      this.configDb.position = this.configForm.get('position').value;
+      this.configDb.squadron = this.configForm.get('squadron').value;
       console.log('Edited config');
       this.router.navigate(['']);
       this.ngbActiveModal.close();

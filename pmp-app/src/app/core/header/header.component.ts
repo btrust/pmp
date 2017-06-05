@@ -1,7 +1,7 @@
-import { NewMsnComponent } from './new-msn/new-msn.component';
+import { NewMsnComponent } from './../../core/msn/new-msn/new-msn.component';
 import {Component, Input} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {ConfigComponent } from './config/config.component';
+import {ConfigComponent } from './../../shared/components/config/config.component';
 
 @Component({
   selector: 'app-header',

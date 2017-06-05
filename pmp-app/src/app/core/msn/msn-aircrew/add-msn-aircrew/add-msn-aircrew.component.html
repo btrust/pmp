@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h4 class="modal-title">Crewmember Details</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="addCrewForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Name">
+        <span *ngIf="!addCrewForm.get('name').valid && addCrewForm.get('name').touched" class="help-block">Enter a valid user name.</span>
+      </div>
+      <div class="form-group">
+        <label for="dodid">DoD ID:</label>
+        <input formControlName="dodid" type="tel" class="form-control" id="dodid" placeholder="DoD ID">
+        <small id="dodidHelp" class="form-text text-muted">Ten-digit number located on the back of your CAC.</small>
+        <span *ngIf="!addCrewForm.get('dodid').valid && addCrewForm.get('dodid').touched" class="help-block">Enter a valid DoD ID.</span>
+      </div>
+      <div class="form-group">
+        <label for="position">Duty Position:</label>
+        <select formControlName="position" class="form-control" id="position">
+        <option value ="">Select Position</option>
+			  <optgroup label="Pilots">
+				  <option value="EP">Evaluator Pilot</option>
+				  <option value="IP">Instructor Pilot</option>
+				  <option value="MP">Mission Pilot</option>
+				  <option value="FPQ">Co-Pilot "Q"</option>
+				  <option value="FPC">Co-Pilot "C"</option>
+			   </optgroup>
+			  <optgroup label="Booms">
+			  	  <option value="EB">Evaluator Boom</option>
+				  <option value="IB">Instructor Boom</option>
+				  <option value="MB">Mission Boom</option>
+				  <option value="FB">First Boom</option>
+			  </optgroup>
+    </select>
+        <span *ngIf="!addCrewForm.get('position').valid && addCrewForm.get('position').touched" class="help-block">Must select a position.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="squadron">Squadron:</label>
+        <select formControlName="squadron" class="form-control" id="squadron">
+          <option value ="">Select Squadron</option>
+				  <option value="92">92 ARS</option>
+				  <option value="93">93 ARS</option>
+				  <option value="384">384 ARS</option>
+          <option value="116">116 ARS</option>
+          <option value="509">509 WPS</option>
+    </select>
+        <span *ngIf="!addCrewForm.get('squadron').valid && addCrewForm.get('squadron').touched" class="help-block">Must select a squadron.</span>
+
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Add</button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+</div>
