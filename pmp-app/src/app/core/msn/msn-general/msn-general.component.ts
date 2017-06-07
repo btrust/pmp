@@ -102,7 +102,7 @@ export class MsnGeneralComponent implements OnInit {
   }
 
   symbolValid(control: FormControl): { [s: string]: boolean } {
-    if (this.SYMBOL.indexOf(control.value.substring(0, 2)) > 0) {
+    if (this.SYMBOL.indexOf(control.value.substring(0, 2)) !== -1) {
       return null;
     }
     return { 'symbolNotValid': true }
@@ -110,7 +110,7 @@ export class MsnGeneralComponent implements OnInit {
 
   showTailDetail(control: FormControl) {
     // If no match is found control.value = -1... therefore we use the > 0 condition.
-    if (this.tailsOnly(this.TAIL).indexOf(control.value) > 0) {
+    if (this.tailsOnly(this.TAIL).indexOf(control.value) !== -1) {
       this.taildetails = this.TAIL.find(x => x.tail === control.value);
     } else {
       this.taildetails = undefined;
