@@ -8,8 +8,8 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Routes, Router, RouterModule } from '@angular/router';
-
+import { CanDeactivate, Router, RouterModule, Routes } from '@angular/router';
+import { CanDeactivateGuard } from './shared/services/can-deactivate-guard.service';
 import { MsnTailService } from './shared/services/msn-tail.service';
 
 import { HeaderComponent } from './core/header/header.component';
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'config', component: ConfigComponent },
   {
     path: 'msn', component: MsnComponent, children: [
-      { path: 'general', component: MsnGeneralComponent },
+      { path: 'general', component: MsnGeneralComponent, canDeactivate: [CanDeactivateGuard] },
       { path: 'aircrew', component: MsnAircrewComponent },
       { path: 'itinerary', component: MsnItineraryComponent },
     ]
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
   ],
-  providers: [AngularIndexedDbService, NgbActiveModal, DatabaseService],
+  providers: [AngularIndexedDbService, NgbActiveModal, DatabaseService, CanDeactivateGuard],
   bootstrap: [AppComponent],
   entryComponents: [ConfigComponent, AddMsnAircrewComponent, NewMsnComponent]
 })

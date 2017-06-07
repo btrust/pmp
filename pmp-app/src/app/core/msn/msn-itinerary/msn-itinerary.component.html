@@ -1,3 +1,28 @@
-<p>
-  msn-itinerary works!
-</p>
+ <form [formGroup]="msnItineraryForm">
+<div class="row">
+        <div class="col-xs col-sm-3">
+        <div class="form-group d-flex flex-column">
+          <label for="depICAO">Departure Field:</label>
+          <input formControlName="depICAO" type="text" class="form-control-lg" id="depICAO" placeholder="ICAO" [(ngModel)]="msn.depICAO">
+          <span *ngIf="!msnItineraryForm.get('depICAO').valid && msnItineraryForm.get('depICAO').touched" class="help-block">Enter a valid ICAO.</span>
+        </div>
+      </div>
+
+        <div class="col-xs col-sm-3">
+        <div class="form-group d-flex flex-column">
+          <label for="arrICAO">Arrival Field:</label>
+          <input formControlName="arrICAO" type="text" class="form-control-lg" id="arrICAO" placeholder="ICAO" [(ngModel)]="msn.arrICAO">
+          <span *ngIf="!msnItineraryForm.get('arrICAO').valid && msnItineraryForm.get('arrICAO').touched" class="help-block">Enter a valid ICAO.</span>
+        </div>
+      </div>
+      </div>
+<div class="row">
+
+
+  
+</div>
+
+
+
+
+  </form>

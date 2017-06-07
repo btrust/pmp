@@ -1,7 +1,8 @@
+import { CanComponentDeactivate } from './../../../shared/services/can-deactivate-guard.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
+import { CanDeactivate, Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +10,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { AngularIndexedDbService } from './../../../shared/services/angular-indexeddb.service';
 import { DatabaseService } from './../../../shared/services/database.service';
 import { MsnTailService } from './../../../shared/services/msn-tail.service';
 import { MsnPurposeService } from './../../../shared/services/msn-purpose.service';
@@ -21,7 +21,8 @@ import { Msn } from './../../../shared/models/msn';
   templateUrl: './msn-general.component.html',
   styleUrls: ['./msn-general.component.css']
 })
-export class MsnGeneralComponent implements OnInit {
+
+export class MsnGeneralComponent implements OnInit, CanComponentDeactivate {
 
   msnGeneralForm: FormGroup;
   TAIL = [];
@@ -35,16 +36,17 @@ export class MsnGeneralComponent implements OnInit {
 
   msn = new Msn;
   taildetails: object = undefined;
-  purposes: any;
+  purposes = [];
+  changesValid = false;
 
   constructor(
     private databaseService: DatabaseService,
     private msnTailService: MsnTailService,
     private msnPurposeService: MsnPurposeService,
   ) {
+    this.msn = this.databaseService.msn[0];
     this.TAIL = this.msnTailService.TAIL;
     this.PURPOSE = this.msnPurposeService.PURPOSE;
-    this.msn = this.databaseService.msn[0];
   }
 
   search = (text$: Observable<string>) =>
@@ -109,7 +111,6 @@ export class MsnGeneralComponent implements OnInit {
   }
 
   showTailDetail(control: FormControl) {
-    // If no match is found control.value = -1... therefore we use the > 0 condition.
     if (this.tailsOnly(this.TAIL).indexOf(control.value) !== -1) {
       this.taildetails = this.TAIL.find(x => x.tail === control.value);
     } else {
@@ -125,6 +126,24 @@ export class MsnGeneralComponent implements OnInit {
     return tailOnlyArray;
   }
 
-  stuff() {
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean  {
+  if ((this.msnGeneralForm.dirty || this.msnGeneralForm.touched) && this.msnGeneralForm.invalid) {
+    this.touchAll();
+   return confirm('You still have invalid/blank inputs."OK" will save these inputs as valid. "CANCEL" to see invalid inputs.');
+  } else {
+    return true;
   }
+}
+
+touchAll() {
+     this.msnGeneralForm.get('symbol').markAsTouched();
+     this.msnGeneralForm.get('purpose').markAsTouched();
+     this.msnGeneralForm.get('auth').markAsTouched();
+     this.msnGeneralForm.get('tail').markAsTouched();
+     this.msnGeneralForm.get('callsign').markAsTouched();
+
+     
+}
+
+
 }

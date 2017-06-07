@@ -20,7 +20,7 @@ export class DatabaseService {
         ) {
 
         this.msn.push(new Msn);
-        this.msn[0].arrICAO = 'KSKA';
+        this.msn[0].depICAO = 'KSKA';
         this.msn[0].arrICAO = 'RODN';
         this.msn[0].auth = '17-9999';
         this.msn[0].callsign = 'ROBOT11';

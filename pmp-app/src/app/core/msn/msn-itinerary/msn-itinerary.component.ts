@@ -20,56 +20,56 @@ import { Msn } from './../../../shared/models/msn';
 export class MsnItineraryComponent implements OnInit {
 
   msnItineraryForm: FormGroup;
-  msnDb = new Msn;
+  msn= new Msn;
 
   constructor(
     private databaseService: DatabaseService,
   ) {
-    // this.msnDb = this.databaseService.msn;
+    this.msn = this.databaseService.msn[0];
   }
 
   ngOnInit() {
     this.msnItineraryForm = new FormGroup({
-      'depICAO': new FormControl(this.msnDb.depICAO, [
+      'depICAO': new FormControl(this.msn.depICAO, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(4),
         Validators.pattern('^[0-9a-zA-Z]+$')
       ]),
-      'arrICAO': new FormControl(this.msnDb.arrICAO, [
+      'arrICAO': new FormControl(this.msn.arrICAO, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(4),
         Validators.pattern('^[0-9a-zA-Z]+$')
       ]),
-      'takeoffPln': new FormControl(this.msnDb.takeoffPln, [
+      'takeoffPln': new FormControl(this.msn.takeoffPln, [
         Validators.required,
       ]),
-      'takeoffAct': new FormControl(this.msnDb.takeoffAct, [
+      'takeoffAct': new FormControl(this.msn.takeoffAct, [
         Validators.required,
       ]),
-      'landPln': new FormControl(this.msnDb.landPln, [
+      'landPln': new FormControl(this.msn.landPln, [
         Validators.required,
       ]),
-      'landAct': new FormControl(this.msnDb.landAct, [
+      'landAct': new FormControl(this.msn.landAct, [
         Validators.required,
       ]),
-      'cargoPln': new FormControl(this.msnDb.cargoPln, [
+      'cargoPln': new FormControl(this.msn.cargoPln, [
         Validators.required,
       ]),
-      'cargoAct': new FormControl(this.msnDb.cargoAct, [
+      'cargoAct': new FormControl(this.msn.cargoAct, [
         Validators.required,
       ]),
-      'rampfuelPln': new FormControl(this.msnDb.rampfuelPln, [
+      'rampfuelPln': new FormControl(this.msn.rampfuelPln, [
         Validators.required,
       ]),
-      'rampfuelAct': new FormControl(this.msnDb.rampfuelAct, [
+      'rampfuelAct': new FormControl(this.msn.rampfuelAct, [
         Validators.required,
       ]),
-      'landfuelPln': new FormControl(this.msnDb.landfuelPln, [
+      'landfuelPln': new FormControl(this.msn.landfuelPln, [
         Validators.required,
       ]),
-      'landfuelAct': new FormControl(this.msnDb.landfuelAct, [
+      'landfuelAct': new FormControl(this.msn.landfuelAct, [
         Validators.required,
       ]),
     });
