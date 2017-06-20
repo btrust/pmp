@@ -80,7 +80,7 @@ export class MsnGeneralComponent implements OnInit, CanComponentDeactivate {
       'tail': new FormControl(this.msn.tail, [
         Validators.required,
         Validators.minLength(7),
-        Validators.maxLength(8),
+        Validators.maxLength(8), 
         Validators.pattern('^[0-9-]+$'),
         this.showTailDetail.bind(this)
       ]),
@@ -142,7 +142,7 @@ touchAll() {
      this.msnGeneralForm.get('tail').markAsTouched();
      this.msnGeneralForm.get('callsign').markAsTouched();
 
-     
+
 }
 
 

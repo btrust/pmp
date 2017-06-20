@@ -1,28 +1,89 @@
- <form [formGroup]="msnItineraryForm">
+<form [formGroup]="msnItineraryForm">
+  <div class="row">
+    <div class="col-xs col-sm-3">
+      <div class="form-group d-flex flex-column">
+        <label for="depICAO">Departure Field:</label>
+        <input formControlName="depICAO" type="text" class="form-control-lg" id="depICAO" placeholder="ICAO" [(ngModel)]="msn.depICAO">
+        <span *ngIf="!msnItineraryForm.get('depICAO').valid && msnItineraryForm.get('depICAO').touched" class="help-block">Enter a valid ICAO.</span>
+      </div>
+    </div>
+
+    <div class="col-xs col-sm-3">
+      <div class="form-group d-flex flex-column">
+        <label for="arrICAO">Arrival Field:</label>
+        <input formControlName="arrICAO" type="text" class="form-control-lg" id="arrICAO" placeholder="ICAO" [(ngModel)]="msn.arrICAO">
+        <span *ngIf="!msnItineraryForm.get('arrICAO').valid && msnItineraryForm.get('arrICAO').touched" class="help-block">Enter a valid ICAO.</span>
+      </div>
+    </div>
+  </div>
+</form>
 <div class="row">
-        <div class="col-xs col-sm-3">
-        <div class="form-group d-flex flex-column">
-          <label for="depICAO">Departure Field:</label>
-          <input formControlName="depICAO" type="text" class="form-control-lg" id="depICAO" placeholder="ICAO" [(ngModel)]="msn.depICAO">
-          <span *ngIf="!msnItineraryForm.get('depICAO').valid && msnItineraryForm.get('depICAO').touched" class="help-block">Enter a valid ICAO.</span>
-        </div>
-      </div>
-
-        <div class="col-xs col-sm-3">
-        <div class="form-group d-flex flex-column">
-          <label for="arrICAO">Arrival Field:</label>
-          <input formControlName="arrICAO" type="text" class="form-control-lg" id="arrICAO" placeholder="ICAO" [(ngModel)]="msn.arrICAO">
-          <span *ngIf="!msnItineraryForm.get('arrICAO').valid && msnItineraryForm.get('arrICAO').touched" class="help-block">Enter a valid ICAO.</span>
-        </div>
-      </div>
-      </div>
-<div class="row">
-
-
-  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Date(Z)</th>
+        <th>Takeoff(Z)</th>
+        <th>Land(Z)</th>
+        <th>Cargo</th>
+        <th>Ramp Fuel</th>
+        <th>Land Fuel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Plan</th>
+        <td>
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group col-xs col-sm-6">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-addon" (click)="d.toggle()">
+                  <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </td>
+        <td><ngb-timepicker [(ngModel)]="time"></ngb-timepicker></td>
+        <td><ngb-timepicker [(ngModel)]="time"></ngb-timepicker></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Actual</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
+<div class="row">
 
+  
+  <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+</div>
 
+<hr>
 
+<div class="row">
+  <form class="form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-addon" (click)="d.toggle()">
+          <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+        </div>
+      </div>
+    </div>
   </form>
+
+  <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+  <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+</div>

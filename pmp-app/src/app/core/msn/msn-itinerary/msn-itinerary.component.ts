@@ -77,3 +77,20 @@ export class MsnItineraryComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'ngbd-datepicker-popup',
+  templateUrl: './msn-itinerary.component.html'
+})
+export class NgbdDatepickerPopup {
+  model;
+}
+
+@Component({
+  selector: 'ngbd-timepicker-basic',
+  templateUrl: './msn-itinerary.component.html'
+})
+export class NgbdTimepickerBasic {
+  time = {hour: 13, minute: 30};
+}
+
