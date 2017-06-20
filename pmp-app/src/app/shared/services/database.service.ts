@@ -32,7 +32,7 @@ export class DatabaseService {
         this.crw.push(new Crw);
         this.crw.push(new Crw);
         this.crw.push(new Crw);
-        this.crw[0].name = 'Fuck Face';
+        this.crw[0].name = 'Mario Andretti';
         this.crw[0].dodid = '1234567890';
         this.crw[0].position = 'FPNC';
         this.crw[0].squadron = '92';
@@ -72,7 +72,7 @@ export class DatabaseService {
             console.log('Error', e.target);
         };
         this.msn[0].symbol = 'T3ZA';
-        this.msn[0].callsign = 'Fack';
+        this.msn[0].callsign = 'ROOK';
         console.log(this.msn[0].symbol);
     }
 
